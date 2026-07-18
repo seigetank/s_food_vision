@@ -1,0 +1,79 @@
+{
+  "model": "runs\\detect\\week3_yolo_train\\weights\\best.pt",
+  "source_image": "data\\sample.jpg",
+  "confidence_threshold": 0.25,
+  "image_shape": {
+    "height": 540,
+    "width": 960,
+    "channels": 3
+  },
+  "detection_count": 6,
+  "detections": [
+    {
+      "label": "bowl",
+      "class_id": 45,
+      "confidence": 0.5256515741348267,
+      "bbox_xyxy": [
+        139,
+        1,
+        867,
+        533
+      ]
+    },
+    {
+      "label": "dining table",
+      "class_id": 60,
+      "confidence": 0.5009126663208008,
+      "bbox_xyxy": [
+        1,
+        2,
+        908,
+        534
+      ]
+    },
+    {
+      "label": "broccoli",
+      "class_id": 50,
+      "confidence": 0.48777517676353455,
+      "bbox_xyxy": [
+        268,
+        256,
+        323,
+        332
+      ]
+    },
+    {
+      "label": "sandwich",
+      "class_id": 48,
+      "confidence": 0.4554094672203064,
+      "bbox_xyxy": [
+        357,
+        49,
+        494,
+        202
+      ]
+    },
+    {
+      "label": "bowl",
+      "class_id": 45,
+      "confidence": 0.30751872062683105,
+      "bbox_xyxy": [
+        658,
+        1,
+        903,
+        103
+      ]
+    },
+    {
+      "label": "bowl",
+      "class_id": 45,
+      "confidence": 0.27363789081573486,
+      "bbox_xyxy": [
+        0,
+        2,
+        192,
+        107
+      ]
+    }
+  ]
+}
