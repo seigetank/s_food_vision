@@ -14,7 +14,12 @@
 
 ### 이미지 전처리
 
-구현 파일: `src/image_preprocessing.py`
+구현 파일:
+
+- `src/basic_processing.py`
+- `src/huggingface_loader.py`
+- `src/preprocessing.py`
+- `src/image_preprocessing.py`
 
 - `data/sample.png`를 OpenCV로 읽고 HSV 색상 공간에서 빨간색 영역을 감지합니다.
 - 빨간색 HSV 범위를 두 구간으로 나누어 mask를 만들고, `cv2.bitwise_and`로 빨간색 영역만 필터링합니다.
@@ -81,8 +86,11 @@
 │       └── sample_point_cloud.png
 ├── src/
 │   ├── __init__.py
+│   ├── basic_processing.py
 │   ├── depth_processing.py
+│   ├── huggingface_loader.py
 │   ├── image_preprocessing.py
+│   ├── preprocessing.py
 │   └── realsense_depth_processing.py
 └── tests/
     └── test_depth_processing.py
