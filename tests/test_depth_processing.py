@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import pytest
-from depth_processing import generate_depth_map, generate_point_cloud
+from src.depth_processing import generate_depth_map, generate_point_cloud
 
 
 def test_generate_depth_map():
