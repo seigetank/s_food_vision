@@ -4,12 +4,16 @@ import cv2
 import numpy as np
 
 
+BASE_DIR = Path(__file__).resolve().parents[1]
+DEFAULT_OUTPUT_DIR = BASE_DIR / "outputs" / "preprocessing"
+
+
 def save_preprocessed_images(
     image,
-    output_path="preprocessed_samples"
+    output_path=DEFAULT_OUTPUT_DIR
 ):
     output_dir = Path(output_path)
-    output_dir.mkdir(exist_ok=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     normalized = cv2.normalize(
@@ -21,7 +25,6 @@ def save_preprocessed_images(
     )
 
     blurred = cv2.GaussianBlur(normalized, (5, 5), 0)
-
     flipped = cv2.flip(image, 1)
 
     matrix = cv2.getRotationMatrix2D(
@@ -59,23 +62,8 @@ def save_preprocessed_images(
         cv2.COLOR_HSV2BGR
     )
 
-    cv2.imwrite(
-        str(output_dir / "01_resized.jpg"),
-        image
-    )
-    cv2.imwrite(
-        str(output_dir / "02_gray_normalized.jpg"),
-        normalized
-    )
-    cv2.imwrite(
-        str(output_dir / "03_blurred.jpg"),
-        blurred
-    )
-    cv2.imwrite(
-        str(output_dir / "04_flipped.jpg"),
-        flipped
-    )
-    cv2.imwrite(
-        str(output_dir / "05_rotated_color.jpg"),
-        rotated_color
-    )
+    cv2.imwrite(str(output_dir / "01_resized.jpg"), image)
+    cv2.imwrite(str(output_dir / "02_gray_normalized.jpg"), normalized)
+    cv2.imwrite(str(output_dir / "03_blurred.jpg"), blurred)
+    cv2.imwrite(str(output_dir / "04_flipped.jpg"), flipped)
+    cv2.imwrite(str(output_dir / "05_rotated_color.jpg"), rotated_color)

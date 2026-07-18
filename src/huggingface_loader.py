@@ -45,3 +45,5 @@ def load_food_image():
             continue
 
         return image
+
+    raise RuntimeError("No suitable Food-101 image was found.")

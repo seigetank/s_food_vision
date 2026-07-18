@@ -1,10 +1,17 @@
+from pathlib import Path
+
 import cv2
 import numpy as np
 
 
+BASE_DIR = Path(__file__).resolve().parents[1]
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_DIR = BASE_DIR / "outputs" / "virtual_depth"
+
+
 def generate_depth_map(image):
     if image is None:
-        raise ValueError("입력된 이미지가 없습니다.")
+        raise ValueError("Input image is missing.")
 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     depth_map = cv2.applyColorMap(gray, cv2.COLORMAP_JET)
@@ -14,7 +21,7 @@ def generate_depth_map(image):
 
 def generate_point_cloud(image):
     if image is None:
-        raise ValueError("입력된 이미지가 없습니다.")
+        raise ValueError("Input image is missing.")
 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
@@ -31,15 +38,18 @@ def generate_point_cloud(image):
 
 
 if __name__ == "__main__":
-    image = cv2.imread("sample.jpg")
+    image = cv2.imread(str(DATA_DIR / "sample.jpg"))
 
     if image is None:
-        raise FileNotFoundError("sample.png를 불러올 수 없습니다.")
+        raise FileNotFoundError("data/sample.jpg was not found.")
 
     depth_map = generate_depth_map(image)
     points_3d = generate_point_cloud(image)
 
-    cv2.imwrite("depth_map.jpg", depth_map)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    cv2.imwrite(str(OUTPUT_DIR / "depth_map.jpg"), depth_map)
+
+    print(f"points_3d shape: {points_3d.shape}")
 
     cv2.imshow("Original Image", image)
     cv2.imshow("Depth Map", depth_map)

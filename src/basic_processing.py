@@ -1,9 +1,17 @@
+from pathlib import Path
+
 import cv2
 import numpy as np
 
 
-def run_basic_processing(image_path="sample.png"):
-    image = cv2.imread(image_path)
+BASE_DIR = Path(__file__).resolve().parents[1]
+DEFAULT_IMAGE_PATH = BASE_DIR / "data" / "sample.png"
+
+
+def run_basic_processing(image_path=DEFAULT_IMAGE_PATH):
+    image = cv2.imread(str(image_path))
+    if image is None:
+        raise FileNotFoundError(f"{image_path} was not found.")
 
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
