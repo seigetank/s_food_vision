@@ -7,34 +7,34 @@
     "width": 960,
     "channels": 3
   },
-  "detection_count": 6,
+  "detection_count": 8,
   "detections": [
-    {
-      "label": "bowl",
-      "class_id": 45,
-      "confidence": 0.5256515741348267,
-      "bbox_xyxy": [
-        139,
-        1,
-        867,
-        533
-      ]
-    },
     {
       "label": "dining table",
       "class_id": 60,
-      "confidence": 0.5009126663208008,
+      "confidence": 0.5209723114967346,
       "bbox_xyxy": [
         1,
         2,
-        908,
+        910,
         534
+      ]
+    },
+    {
+      "label": "bowl",
+      "class_id": 45,
+      "confidence": 0.518272876739502,
+      "bbox_xyxy": [
+        138,
+        1,
+        871,
+        533
       ]
     },
     {
       "label": "broccoli",
       "class_id": 50,
-      "confidence": 0.48777517676353455,
+      "confidence": 0.5087630748748779,
       "bbox_xyxy": [
         268,
         256,
@@ -45,18 +45,18 @@
     {
       "label": "sandwich",
       "class_id": 48,
-      "confidence": 0.4554094672203064,
+      "confidence": 0.499958872795105,
       "bbox_xyxy": [
         357,
         49,
         494,
-        202
+        203
       ]
     },
     {
       "label": "bowl",
       "class_id": 45,
-      "confidence": 0.30751872062683105,
+      "confidence": 0.29920831322669983,
       "bbox_xyxy": [
         658,
         1,
@@ -65,14 +65,36 @@
       ]
     },
     {
+      "label": "sandwich",
+      "class_id": 48,
+      "confidence": 0.2809372544288635,
+      "bbox_xyxy": [
+        590,
+        109,
+        726,
+        243
+      ]
+    },
+    {
       "label": "bowl",
       "class_id": 45,
-      "confidence": 0.27363789081573486,
+      "confidence": 0.2688281536102295,
       "bbox_xyxy": [
         0,
         2,
         192,
-        107
+        106
+      ]
+    },
+    {
+      "label": "sandwich",
+      "class_id": 48,
+      "confidence": 0.25184571743011475,
+      "bbox_xyxy": [
+        476,
+        55,
+        598,
+        204
       ]
     }
   ]
