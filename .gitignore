@@ -1,3 +1,7 @@
 .venv/
 __pycache__/
 *.pyc
+*.pt
+runs/
+datasets/week3_yolo_sample/coco8/
+datasets/week3_yolo_sample/data_runtime.yaml
