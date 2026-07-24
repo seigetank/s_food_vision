@@ -1,0 +1,31 @@
+{
+  "baseline": {
+    "precision": 0.620970635201533,
+    "recall": 0.8333333333333334,
+    "map50": 0.8875131975867271,
+    "map50_95": 0.6290666933218909
+  },
+  "fine_tuned": {
+    "precision": 0.7600450031931327,
+    "recall": 0.8333333333333334,
+    "map50": 0.8889736346516007,
+    "map50_95": 0.6244386849082671
+  },
+  "delta": {
+    "precision": 0.13907436799159978,
+    "recall": 0.0,
+    "map50": 0.0014604370648736431,
+    "map50_95": -0.004628008413623763
+  },
+  "summary": "Fine-tuning did not improve mAP50-95 on the COCO8 validation split. The four-image training split is too small for a reliable performance claim.",
+  "experiment": {
+    "dataset": "Ultralytics COCO8",
+    "train_images": 4,
+    "validation_images": 4,
+    "baseline_model": "yolov8n.pt",
+    "fine_tuned_model": "runs\\detect\\week3_yolo_train\\weights\\best.pt",
+    "imgsz": 640,
+    "device": "cpu",
+    "limitations": "COCO8 is a workflow sample, not a food-specific benchmark. The metrics are not representative of smart-refrigerator recognition performance."
+  }
+}

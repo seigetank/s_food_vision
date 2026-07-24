@@ -40,6 +40,22 @@ def parse_args():
         default=640,
         help="Training image size."
     )
+    parser.add_argument(
+        "--device",
+        default="cpu",
+        help="Training device, for example cpu, 0, or cuda."
+    )
+    parser.add_argument(
+        "--name",
+        default=TRAIN_NAME,
+        help="Ultralytics run name."
+    )
+    parser.add_argument(
+        "--augment",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Enable or disable YOLO training augmentation."
+    )
     return parser.parse_args()
 
 
@@ -92,7 +108,14 @@ def write_runtime_data_yaml():
     return RUNTIME_DATA_YAML
 
 
-def train_yolo(model_name=DEFAULT_MODEL, epochs=10, imgsz=640):
+def train_yolo(
+    model_name=DEFAULT_MODEL,
+    epochs=10,
+    imgsz=640,
+    device="cpu",
+    name=TRAIN_NAME,
+    augment=True
+):
     ensure_coco8_dataset()
     SETTINGS["datasets_dir"] = str(DATASET_DIR)
     data_yaml = write_runtime_data_yaml()
@@ -103,12 +126,17 @@ def train_yolo(model_name=DEFAULT_MODEL, epochs=10, imgsz=640):
         epochs=epochs,
         imgsz=imgsz,
         project=str(RUNS_DIR),
-        name=TRAIN_NAME,
+        name=name,
         exist_ok=True,
-        device="cpu"
+        device=device,
+        augment=augment,
+        plots=True,
+        seed=42,
+        deterministic=True,
+        workers=0
     )
 
-    best_path = RUNS_DIR / TRAIN_NAME / "weights" / "best.pt"
+    best_path = RUNS_DIR / name / "weights" / "best.pt"
     print(f"best_model: {best_path}")
 
     return results
@@ -119,5 +147,8 @@ if __name__ == "__main__":
     train_yolo(
         model_name=args.model,
         epochs=args.epochs,
-        imgsz=args.imgsz
+        imgsz=args.imgsz,
+        device=args.device,
+        name=args.name,
+        augment=args.augment
     )
